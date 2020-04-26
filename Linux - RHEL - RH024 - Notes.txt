@@ -1,0 +1,131 @@
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+					Linux - RHEL - RH024 - Notes
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Lecture 1:
+NA
+
+---------------------------------------------------------------------------
+
+Lecture 2:
+Synopsis in man page shows the actual usage of the command
+[] signifies the optional usage of that argument in command
+... signifies multiple occurence of that argument in command
+- signifies single letter argument
+-- signifies to take complete word as argument
+
+---------------------------------------------------------------------------
+
+Lecture 3:
+Foreground Process: If process is getting input from the user from a terminal
+Backgroud Process: Its not getting input from the terminal but can display output to the terminal
+Daemon Process: no interaction in terminal, they provide networking service or other services to the system
+Kernel Threads: Part of kernel running as if they are normal user processes/daemons and are scheduled that way
+
+ps -ef   =>  User,PID,Shell,ProcessName
+ps -aux  =>  User,PID,Shell,ProcessName,%CPU,%MEM
+
+[ProcessName] signifies its a kernel thread 
+? in ps signifies process is not associated with any shell (TTY)
+
+---------------------------------------------------------------------------
+
+Lecture 4:
+NA
+
+---------------------------------------------------------------------------
+
+Lecture 5:
+Soft Link: ln -s <file> <linkName>
+	One file with one filename and pointer of other name
+	While editing the link, main file is actually edited
+	If original file is deleted, link gets broken (data lost)
+	One file on disk
+Hard Link: ln <file> <linkName>
+	One file with two filenames (Each file actually filename points to same block of data)
+	Any editing in any two filename, result in editing of original and link file
+	if original is deleted, other remains intact
+	One file on disk
+Copy: cp <file> <newFile>
+	Two file with two filenames
+	Editing in one doesn't reflect it in other
+	No effect of deletion on other file
+	Two file on disk
+Number between file permissions and owner name in ls is number of hard links to the file
+
+---------------------------------------------------------------------------
+
+Lecture 6: 
+etc -> Extended Text Configurations
+lib/lib64 -> Library files of application
+var -> Variable Data, Contains cache, logs, admin and login data, spool files(Spool: data/files waiting for next stage of processing eg: data due to speed diff. b/w 2 devices)
+/tmp -> temp. storage clears every 10 days
+/var/tmp -> temp. storage clears every 30 days
+
+---------------------------------------------------------------------------
+
+Lecture 7:
+Insert Mode: To insert text
+Command Mode: 
+All these in Command Mode of VIM
+yy : Copy
+p  : Paste
+pw : Paste Word
+3p : Paste 3 times
+dd : Delete Line
+dw : Delete Word (Keep cursor at start of word)
+x  : Delete character
+Extended Command Mode:
+:wq , :q! , :s//g
+
+---------------------------------------------------------------------------
+
+Lecture 8:
+sudo -u anotherUser <command>     Run a command as any other user
+Ctrl+D    Exit & Logout
+
+---------------------------------------------------------------------------
+
+Lecture 9: 
+ls -ld /dir  -> View properties of dirs
+file permission go in order u -> g -> o i.e. a user is checked first with 'u' then 'g' then only 'o' and permission checking stops at first match! permission in 'o' will only apply when user in ques. is neither 'u' nor a part of 'g' 
+
+---------------------------------------------------------------------------
+
+Lecture 10: 
+Redhat provide pkgs using subscription-manager from Satellite Server (which fetches pkgs from Redhat CDN)
+yum repolist all  -> to view all repos being used
+yum info <pkgName>  ->  tells about the package
+/etc/yum.repos.d/  -> location for repos in redhat
+
+---------------------------------------------------------------------------
+
+Lecture 11: 
+/etc/resolv.conf    ->  dns conf file
+nmcli -> to perform any network related stuff (ip,devices,etc.)
+
+---------------------------------------------------------------------------
+
+Lecture 12: 
+systemd : management of processes, daemons etc
+systemctl used to manage systemd config files
+systemctl list-units --type service   -> Service type unit files(config) will be listed
+Reload VS Restart : In Reload same PID, used when we change the config file and now we want it to reload it to memory. Restart kills the service and then restart it (diff PID)
+systemctl enable sshd  -> Start service on boot
+
+---------------------------------------------------------------------------
+
+Lecture 13: 
+Containers: Each application have separate runtime env. along with library files eg: docker, kubernetes(pod)
+
+---------------------------------------------------------------------------
+
+Lecture 14: 
+Cockpit: Web GUI interface to manage linux administration (Run on port 9090)
+
+---------------------------------------------------------------------------
+
+Lecture 15:
+NA 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
